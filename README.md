@@ -1,8 +1,136 @@
-# Manish-first-repository
-i am new to github
-<br>
-blas new line 
-<br>
-one more line
-<br>
-one more
+#My fisrt rock paper scissor edit
+<!DOCTYPE html>
+<head>
+  
+  <title>Game</title>
+</head>
+<style>
+  body{
+    background-color: black;
+    color: white;
+  }
+ .op{
+  height: 50px;
+ 
+ }
+ .title{
+  font-size: 30px;
+  font-family: arial;
+  font-weight: bold;
+  margin: 30px;
+ }
+ .b-options
+ {
+  margin-left: 10px;
+  height: 130px;
+  background: transparent;
+  border-radius: 4px;
+  border-color: white;
+  border: 2px solid white;
+  padding: 20px;
+  border-radius: 115px;
+ }
+ .move-icon{
+  height: 80px;
+ }
+ .b-options:hover{
+  cursor: pointer;
+  background-color: aliceblue;
+ }
+ .g-0
+ {
+  font-family: arial;
+ }
+</style>
+<body>
+  <p class="title">Rock Paper Scissor :Created by Manish</p>
+  
+  <button onclick = "playgame('Rock');" class="b-options"><img src="Rock-emoji.png" class="move-icon"></button>
+  <button onclick = "playgame('Paper');" class="b-options"><img src="Paper-emoji.png" class="move-icon"></button>
+  <button onclick = "playgame('Scissor');" class="b-options"><img src="Scissor-emoji.png" class="move-icon"></button>
+  <br>
+  <p class="game-result"></p>
+  <p class="choosed"></p>
+  <p class ="game-options g-o"></p>
+</body>
+<script>
+  const result={
+          Wins:0,
+          Lose:0,
+          Tie:0
+       }
+  function playgame(user_choice)
+  {
+      const comp_choice_n = (Math.random()*3);
+      let comp_choice;
+      if(comp_choice_n >=0 && comp_choice_n <1)
+      {
+        comp_choice = 'Rock';
+      }
+      else if(comp_choice_n >=1 && comp_choice_n <2)
+      {
+       comp_choice = 'Paper';
+      }
+      else {
+       comp_choice = 'Scissor';
+      }
+      // creating a object result to store the score 
+       
+
+      // now comparing the values of computer and user
+      let reuslt_t ='';
+      if(user_choice ==  comp_choice )
+      {
+          reuslt_t = 'Tie';//temperory result
+          result.Tie +=1;
+      }
+      // ties sction over
+      else
+      {
+        if(user_choice == 'Paper')
+        {
+          if(comp_choice == 'Scissor')
+          {
+            reuslt_t = 'Lose';
+            result.Lose += 1;
+          }
+          else{
+            reuslt_t = 'Win';
+            result.Wins += 1;
+          }
+        }
+        if(user_choice == 'Rock')
+        {
+          if(comp_choice == 'Scissor')
+          {
+            reuslt_t = 'Win';
+            result.Wins += 1;
+          }
+          else{
+            reuslt_t = 'Lose';
+            result.Lose += 1;
+          }
+        }
+        if(user_choice == 'Scissor')
+        {
+          if(comp_choice == 'Paper')
+          {
+            reuslt_t = 'Win';
+            result.Wins += 1;
+          }
+          else{
+            reuslt_t = 'Lose';
+            result.Lose += 1;
+          }
+        }
+        // putting the images in the button
+        
+        
+      }
+      document.querySelector('.choosed').innerHTML = `You <img src="${user_choice}-emoji.png" class ="op" > Computer <img src="${comp_choice}-emoji.png" class="op" > `;
+    document.querySelector('.game-result').innerHTML = `You ${reuslt_t}`;
+   document.querySelector('.game-options').innerHTML = `Wins:${result.Wins}, Loses:${ result.Lose } ,Ties:${ result.Tie }`;
+  }
+ 
+</script>
+</html>
